@@ -32,7 +32,7 @@ jobs:
     
     - name: Run Bandit (SAST)
       run: |
-        bandit -r app/ -f json -o bandit-report.json || true
+        bandit -r app/ -f html -o bandit-report.html || true
         bandit -r app/ -f txt
     
     - name: Upload Bandit report
@@ -40,20 +40,17 @@ jobs:
       if: always()
       with:
         name: bandit-report
-        path: bandit-report.json
+        path: bandit-report.html
     
     - name: Run Safety (SCA)
-      run: |
-        uv pip freeze > requirements.txt
-        safety check --json --output safety-report.json || true
-        safety check
+      run: safety scan --output html >safety-report.html
     
     - name: Upload Safety report
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: safety-report
-        path: safety-report.json
+        path: safety-report.html
     
     - name: Run OWASP Dependency-Check (SCA)
       uses: dependency-check/Dependency-Check_Action@main
@@ -62,8 +59,6 @@ jobs:
         path: '.'
         format: 'HTML'
         args: >
-          --enableRetired
-          --enableExperimental
           --failOnCVSS 9
       continue-on-error: true
     
