@@ -131,27 +131,7 @@ Authorization: Bearer <JWT_TOKEN>
 
 ## Тестирование
 
-**Примеры CURL-запросов:**
-
-1. Регистрация пользователя:
-```bash
-curl -X POST http://localhost:5000/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"username": "testuser", "password": "testpass123"}'
-```
-
-2. Логин:
-```bash
-curl -X POST http://localhost:5000/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"username": "testuser", "password": "testpass123"}'
-```
-
-3. Получение данных (с токеном):
-```bash
-curl -X GET http://localhost:5000/api/data \
-  -H "Authorization: Bearer YOUR_TOKEN_HERE"
-```
+Скрипт для тестирования API и примеры запросов приведены в файле [test_api.ps1](test_api.ps1).
 
 ## Реализованные меры защиты
 
@@ -167,6 +147,7 @@ cursor.execute('SELECT * FROM users WHERE username = ?', (username,))
 ### 2. Защита от XSS (Cross-Site Scripting)
 
 Все пользовательские данные, возвращаемые в ответах API, проходят через функцию `sanitize_input()`, которая использует `werkzeug.utils.escape()` для экранирования специальных символов.
+> Отсутствие ограничений по символам в username сделано умышленно - только для демонстрации возможности экранирования
 
 **Пример реализации:**
 ```python
