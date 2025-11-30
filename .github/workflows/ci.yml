@@ -43,7 +43,9 @@ jobs:
         path: bandit-report.html
     
     - name: Run Safety (SCA)
-      run: safety scan --output html >safety-report.html
+      run: |
+        safety scan --output html > safety-report.html || true
+        safety scan
     
     - name: Upload Safety report
       uses: actions/upload-artifact@v4
@@ -58,6 +60,7 @@ jobs:
         project: 'itmo-cybersec-lab1'
         path: '.'
         format: 'HTML'
+        out: 'reports'
         args: >
           --failOnCVSS 9
       continue-on-error: true
@@ -67,5 +70,5 @@ jobs:
       if: always()
       with:
         name: dependency-check-report
-        path: reports/
+        path: ${{github.workspace}}/reports
 
