@@ -48,8 +48,9 @@ jobs:
         project: 'itmo-cybersec-lab1'
         path: '.'
         format: 'HTML'
-        out: 'reports'
         args: >
+          --enableRetired
+          --enableExperimental
           --failOnCVSS 9
       continue-on-error: true
     
