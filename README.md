@@ -1,4 +1,4 @@
-# Информационная безопасность - Лабораторная №1
+# Лабораторная №1 (Информационная безопасность)
 
 Проект представляет собой защищенное REST API приложение на Flask с интеграцией инструментов безопасности в CI/CD pipeline. Реализованы меры защиты от основных уязвимостей из OWASP Top 10.
 
@@ -241,6 +241,11 @@ def token_required(f):
 
 После выполнения pipeline отчеты доступны в разделе "Actions" репозитория:
 - **Bandit Report** (HTML) - показывает отсутствие критических уязвимостей в коде
-- **OWASP Dependency-Check Report** (HTML) - анализ всех зависимостей на уязвимости
+- **OWASP Dependency-Check Report** (HTML) - показывает отсутствие критических уязвимостей в зависимостях
 
-.... скрины ....
+**Bandit Report (уязвимостей не найдено)**  
+<img width="643" height="317" alt="image" src="https://github.com/user-attachments/assets/9c2dd498-e2d5-41e7-9c15-b16445f82cfc" />
+
+**OWASP Dependency-Check Report (найдена уязвимость в pyjwt - weak encryption, но она не критическая)**  
+<img width="1173" height="808" alt="image" src="https://github.com/user-attachments/assets/74ee0e48-8af6-4181-a489-a5353f2a5b64" />
+
