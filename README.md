@@ -241,7 +241,6 @@ def token_required(f):
 
 После выполнения pipeline отчеты доступны в разделе "Actions" репозитория:
 - **Bandit Report** (HTML) - показывает отсутствие критических уязвимостей в коде
-- **Safety Report** (HTML) - показывает отсутствие уязвимостей в зависимостях
-- **OWASP Dependency-Check Report** (HTML) - детальный анализ всех зависимостей
+- **OWASP Dependency-Check Report** (HTML) - анализ всех зависимостей на уязвимости
 
 .... скрины ....

@@ -27,8 +27,8 @@ jobs:
     - name: Install dependencies
       run: uv sync
 
-    - name: Install Bandit & Safety
-      run: pip install bandit safety
+    - name: Install Bandit
+      run: pip install bandit
     
     - name: Run Bandit (SAST)
       run: |
@@ -41,18 +41,6 @@ jobs:
       with:
         name: bandit-report
         path: bandit-report.html
-    
-    - name: Run Safety (SCA)
-      run: |
-        safety scan --output html > safety-report.html || true
-        safety scan
-    
-    - name: Upload Safety report
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: safety-report
-        path: safety-report.html
     
     - name: Run OWASP Dependency-Check (SCA)
       uses: dependency-check/Dependency-Check_Action@main
@@ -70,5 +58,5 @@ jobs:
       if: always()
       with:
         name: dependency-check-report
-        path: ${{github.workspace}}/reports
+        path: reports/
 
