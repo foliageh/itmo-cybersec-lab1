@@ -1,0 +1,12 @@
+[project]
+name = "itmo-cybersec-lab1"
+version = "0.1.0"
+description = "Secure REST API with Flask and CI/CD security scanning"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "bcrypt>=5.0.0",
+    "flask>=3.1.2",
+    "pyjwt>=2.10.1",
+    "werkzeug>=3.1.4",
+]
